@@ -1,7 +1,6 @@
-
-
-module.exports = [
-    {
+module.exports = 
+[
+     {
       date: "April 1",
       name: "Income",
       from: "Old Glory Insurance",

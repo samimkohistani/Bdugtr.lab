@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeter</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+
+</head>
+<body>
+    <%let bankAccount = budget.reduce((acc, budget)=>{
+        return acc + parseInt(budget.amount);
+    }, 0);%>
+<div class="container">
+        <h1>BUDGTR</h1> <h2>Total: <%="$" + bankAccount%></h2>
+    <table>
+        <% for(let i=0; i < budget.length; i++){%>
+            <tr>
+                <td><%=budget[i].date%></td>
+                <td><a href=/budgets/<%=i%>><%=budget[i].name%></a></td>
+                <td><%="$" + budget[i].amount%></td>
+            </tr>
+        <%}%>
+    </table>
+    <nav><a href="/budgets/new">Add another expense</a></nav>
+</div>
+<% if (bankAccount > 1000) { %>
+    <style>
+        body {
+            background-color: green;
+        }
+    </style>
+<% } else if (bankAccount < 0) { %>
+    <style>
+        body {
+            background-color: red;
+        }
+    </style>
+<% } %>
+</style>
+</body>
+</html>
